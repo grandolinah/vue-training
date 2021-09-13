@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Data bindng: Directives</h1>
+    <h2>v-bind</h2>
+    <a
+      v-bind:href="link.href"
+      v-bind:alt="link.alt"
+      v-bind:class="link.class"
+    >
+      {{ link.text }}
+    </a>
+    <p>shorthand</p>
+    <a
+      :href="link.href"
+      :alt="link.alt"
+      :class="link.class"
+    >
+      {{ link.text }}
+    </a>
+    <h2>v-if</h2>
+    <p v-if="showBanner">THIS IS A SPECIPA SALES BANNER</p>
+    <h2>v-show</h2>
+    <p>Secret number: <span v-show="secretNumber !== 0">{{ secretNumber }} </span></p>
+    <h2>v-html</h2>
+    <article v-html="post">{{ post }} </article>
+  </div>
+  <script>
+    const viewModel = new Vue({
+      el: '#app',
+      data: {
+        link: {
+          text: 'Vue.js',
+          href: 'https://vuejs.org/',
+          alt: 'Vue.js website',
+          class: 'links',
+        },
+        showBanner: false,
+        secretNumber: 0,
+        post: 'This is my <strong>awesome</strong> blog post',
+      },
+    });
+  </script>
+</body>
+</html>
