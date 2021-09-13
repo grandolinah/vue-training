@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <style>
+    .negative {
+      color: red;
+    }
+
+    .positive {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- apply a class if negative -->
+    <div v-bind:class="{ negative: count < 0, positive: count > 0 }">
+      {{ count }}
+      <button type="button" v-on:click="increase">Increase</button>
+      <button type="button" v-on:click="decrease">Decrease</button>
+      <button type="button" v-on:click="double">Double</button>
+      <button type="button" v-on:click="reset">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    const viewModel = new Vue({
+      el: '#app',
+      data() {
+        return {
+          count: 0,
+        }
+      },
+      methods: {
+        increase() {
+          this.count++;
+        },
+        decrease() {
+          this.count--;
+        },
+        double() {
+          this.count = this.count * 2;
+        },
+        reset() {
+          this.count = 0;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
